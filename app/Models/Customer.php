@@ -11,7 +11,6 @@ class Customer extends Model
 {
     use HasFactory, UuidTrait, SoftDeletes;
 
-
     /**
      * @inheritdoc
      */
