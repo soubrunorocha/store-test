@@ -15,7 +15,8 @@ class CustomerController extends Controller
      */
     public function index(CustomerRequest $request)
     {
-        return Customer::paginate(10);
+        return Customer::orderBy('created_at')
+            ->paginate(10);
     }
 
 

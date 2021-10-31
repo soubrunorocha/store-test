@@ -13,7 +13,8 @@ class CustomerRequest extends BaseFormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'tax_number' => 'required|string|unique:customers,tax_number,'.$this->customer->id ?? "".'|max:255',
+            'tax_number' => 'required|string|max:255|'.
+                'unique:customers,tax_number,'.($this->customer->id ?? '').',id,deleted_at,NULL',
             'birth_date' => 'required|date',
         ];
     }
