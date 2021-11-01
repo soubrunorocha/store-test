@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Customer extends Model
+class Product extends Model
 {
     use HasFactory, UuidTrait, SoftDeletes;
 
@@ -25,8 +25,11 @@ class Customer extends Model
      */
     protected $fillable = [
         'name',
-        'tax_number',
-        'birth_date',
+        'custom_id',
+        'batch_number',
+        'color',
+        'description',
+        'value',
     ];
 
     /**
@@ -36,10 +39,13 @@ class Customer extends Model
      */
     protected $casts = [
         'id' => 'string',
+        'custom_id' => 'string',
         'name' => 'string',
-        'tax_number' => 'string',
-        'birth_date' => 'date:Y-m-d',
+        'batch_number' => 'integer',
+        'color' => 'string',
+        'description' => 'string',
+        'value' => 'string',
         'created_at' => 'datetime:Y-m-d H:i:s',
-        'updated_at' => 'datetime:Y-m-d H:i:s',
+        'updated_at' => 'datetime:Y-m-d H:i:s'
     ];
 }
