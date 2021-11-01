@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-class ProductRequest extends BaseFormRequest
+class UserRequest extends BaseFormRequest
 {
     /**
      * Get the validation rules that apply to the post request.
@@ -13,12 +13,9 @@ class ProductRequest extends BaseFormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'custom_id' => 'required|string|max:255|'.
-                'unique:products,custom_id,'.($this->product->id ?? '').',id,deleted_at,NULL',
-            'batch_number' => 'required|numeric',
-            'color' => 'required|string',
-            'description' => 'required|string|max:65535',
-            'value' => 'required|numeric'
+            'email' => 'required|string|max:255|email|'.
+                'unique:users,email,'.($this->user->id ?? '').',id,deleted_at,NULL',
+            'password' => 'required|string|max:255',
         ];
     }
 
