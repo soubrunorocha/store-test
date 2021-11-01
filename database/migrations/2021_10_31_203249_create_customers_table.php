@@ -17,8 +17,7 @@ class CreateCustomersTable extends Migration
             $table->uuid('id')
                 ->primary();
             $table->string('name');
-            $table->string('tax_number')
-                ->nullable();
+            $table->string('tax_number');
             $table->date('birth_date');
             $table->timestamps();
             $table->softDeletes();

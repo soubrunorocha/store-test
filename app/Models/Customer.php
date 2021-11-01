@@ -12,12 +12,16 @@ class Customer extends Model
     use HasFactory, UuidTrait, SoftDeletes;
 
     /**
-     * @inheritdoc
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
      */
     public $incrementing = false;
 
     /**
-     * @inheritdoc
+     * The model's attributes.
+     *
+     * @var array
      */
     protected $fillable = [
         'name',
@@ -26,13 +30,16 @@ class Customer extends Model
     ];
 
     /**
-     * @inheritdoc
+     * The attributes that should be cast.
+     *
+     * @var array
      */
     protected $casts = [
         'id' => 'string',
+        'name' => 'string',
         'tax_number' => 'string',
         'birth_date' => 'date:Y-m-d',
         'created_at' => 'datetime:Y-m-d H:i:s',
-        'updated_at' => 'datetime:Y-m-d H:i:s'
+        'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
 }
