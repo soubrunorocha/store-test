@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
-use App\Models\Product;
+use App\Http\Requests\SaleRequest;
+use App\Models\Sale;
 
-class ProductController extends Controller
+class SaleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(ProductRequest $request)
+    public function index(SaleRequest $request)
     {
-        return Product::orderBy('created_at')
+        return Sale::orderBy('created_at')
             ->paginate(10);
     }
 
@@ -24,44 +24,44 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProductRequest $request)
+    public function store(SaleRequest $request)
     {
-        return Product::create($request->all());
+        return Sale::create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductRequest $request, Product $product)
+    public function show(SaleRequest $request, Sale $sale)
     {
-        return $product;
+        return $sale;
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, Product $product)
+    public function update(SaleRequest $request, Sale $sale)
     {
-        $product->update($request->all());
-        return $product;
+        $sale->update($request->all());
+        return $sale;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Sale  $sale
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductRequest $request, Product $product)
+    public function destroy(SaleRequest $request, Sale $sale)
     {
-        $product->delete();
+        $sale->delete();
         return response()
             ->noContent();
     }
