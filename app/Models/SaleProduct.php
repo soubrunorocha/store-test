@@ -5,10 +5,9 @@ namespace App\Models;
 use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Sale extends Model
+class SaleProduct extends Model
 {
     use HasFactory, UuidTrait, SoftDeletes;
 
@@ -25,8 +24,10 @@ class Sale extends Model
      * @var array
      */
     protected $fillable = [
-        'customer_id',
-        'seller_id',
+        'sale_id',
+        'product_id',
+        'quantity',
+        'value'
     ];
 
     /**
@@ -45,20 +46,11 @@ class Sale extends Model
      */
     protected $casts = [
         'id' => 'string',
-        'sale_number' => 'integer',
-        'customer_id' => 'string',
-        'seller_id' => 'string',
+        'sale_id' => 'string',
+        'product_id' => 'string',
+        'quantity' => 'integer',
+        'value' => 'float',
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s'
     ];
-
-    /**
-     * Get all of the products for the Sale
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function products(): HasMany
-    {
-        return $this->hasMany(SaleProduct::class);
-    }
 }

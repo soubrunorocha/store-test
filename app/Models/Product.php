@@ -54,7 +54,7 @@ class Product extends Model
         'batch_number' => 'integer',
         'color' => 'string',
         'description' => 'string',
-        'value' => 'string',
+        'value' => 'float',
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s'
     ];

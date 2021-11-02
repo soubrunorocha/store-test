@@ -4,7 +4,9 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductBatchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\SaleProductController;
 use App\Http\Controllers\UserController;
+use App\Models\SaleProduct;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +33,7 @@ Route::resource('sales', SaleController::class)
     ->except(['create', 'edit']);
 
 Route::resource('products.batches', ProductBatchController::class)
+    ->except(['create', 'edit']);
+
+Route::resource('sales.products', SaleProductController::class)
     ->except(['create', 'edit']);
