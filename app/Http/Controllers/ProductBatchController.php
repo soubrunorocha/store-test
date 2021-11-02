@@ -11,7 +11,10 @@ class ProductBatchController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param ProductBatchRequest $request
+     * @param Product $product
+     *
+     * @return [type]
      */
     public function index(ProductBatchRequest $request, Product $product)
     {
@@ -22,8 +25,10 @@ class ProductBatchController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param ProductBatchRequest $request
+     * @param Product $product
+     *
+     * @return [type]
      */
     public function store(ProductBatchRequest $request, Product $product)
     {
@@ -34,8 +39,11 @@ class ProductBatchController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $batch
-     * @return \Illuminate\Http\Response
+     * @param ProductBatchRequest $request
+     * @param Product $product
+     * @param ProductBatch $batch
+     *
+     * @return [type]
      */
     public function show(ProductBatchRequest $request, Product $product, ProductBatch $batch)
     {
@@ -45,9 +53,11 @@ class ProductBatchController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $batch
-     * @return \Illuminate\Http\Response
+     * @param ProductBatchRequest $request
+     * @param Product $product
+     * @param ProductBatch $batch
+     *
+     * @return [type]
      */
     public function update(ProductBatchRequest $request, Product $product, ProductBatch $batch)
     {
@@ -58,8 +68,11 @@ class ProductBatchController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $batch
-     * @return \Illuminate\Http\Response
+     * @param ProductBatchRequest $request
+     * @param Product $product
+     * @param ProductBatch $batch
+     *
+     * @return [type]
      */
     public function destroy(ProductBatchRequest $request, Product $product, ProductBatch $batch)
     {
