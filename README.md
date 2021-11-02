@@ -23,14 +23,10 @@ Both products and sales modules will gain more complex layers, making possible t
 
   
 
-### Step 3 - Security layer
+### Step 3 - Security layer ✅
 
 
-Now all operations will need an user, password and access level :
-
-- Admin - All modules
-- Seller - Read-only customers and products modules, all access to sales module
-
+Now all operations will need an user, password
 Trying to use Laravel Sanctum or OAuth  
   
 
