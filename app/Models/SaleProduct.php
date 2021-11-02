@@ -27,7 +27,7 @@ class SaleProduct extends Model
         'sale_id',
         'product_id',
         'quantity',
-        'value'
+        'value',
     ];
 
     /**
@@ -51,6 +51,6 @@ class SaleProduct extends Model
         'quantity' => 'integer',
         'value' => 'float',
         'created_at' => 'datetime:Y-m-d H:i:s',
-        'updated_at' => 'datetime:Y-m-d H:i:s'
+        'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
 }
