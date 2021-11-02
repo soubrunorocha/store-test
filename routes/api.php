@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductBatchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SaleProductController;
 use App\Http\Controllers\UserController;
-use App\Models\SaleProduct;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,20 +20,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('customers', CustomerController::class)
-    ->except(['create', 'edit']);
 
-Route::resource('products', ProductController::class)
-    ->except(['create', 'edit']);
+Route::post('login', [AuthController::class, 'login']);
 
-Route::resource('users', UserController::class)
-    ->except(['create', 'edit']);
+Route::middleware(['auth:sanctum'])->group(function () {
 
-Route::resource('sales', SaleController::class)
-    ->except(['create', 'edit']);
+    Route::resource('customers', CustomerController::class)
+        ->except(['create', 'edit']);
 
-Route::resource('products.batches', ProductBatchController::class)
-    ->except(['create', 'edit']);
+    Route::resource('products', ProductController::class)
+        ->except(['create', 'edit']);
 
-Route::resource('sales.products', SaleProductController::class)
-    ->except(['create', 'edit']);
+    Route::resource('users', UserController::class)
+        ->except(['create', 'edit']);
+
+    Route::resource('sales', SaleController::class)
+        ->except(['create', 'edit']);
+
+    Route::resource('products.batches', ProductBatchController::class)
+        ->except(['create', 'edit']);
+
+    Route::resource('sales.products', SaleProductController::class)
+        ->except(['create', 'edit']);
+
+
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::get('me', [AuthController::class, 'me']);
+});
