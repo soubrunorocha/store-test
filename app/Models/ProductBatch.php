@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use App\Traits\UuidTrait;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class ProductBatch extends Model
 {
     use HasFactory, UuidTrait, SoftDeletes;
 
@@ -25,12 +25,10 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
+        'product_id',
         'custom_id',
-        'batch_number',
-        'color',
-        'description',
-        'value',
+        'manufactured_at',
+        'batch_quantity',
     ];
 
     /**
@@ -49,23 +47,23 @@ class Product extends Model
      */
     protected $casts = [
         'id' => 'string',
+        'product_id' => 'string',
         'custom_id' => 'string',
-        'name' => 'string',
-        'batch_number' => 'integer',
-        'color' => 'string',
-        'description' => 'string',
-        'value' => 'string',
+        'manufactured_at' => 'datetime:Y-m-d H:i:s',
+        'batch_quantity' => 'integer',
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s'
     ];
 
     /**
-     * Get all of the batches for the Product
+     * Filter to bring batches for one product
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @param string $productId
+     *
+     * @return Builder
      */
-    public function batches(): HasMany
+    public function scopeProduct(Builder $query, string $productId) : Builder
     {
-        return $this->hasMany(ProductBatch::class);
+        return $query->where('product_id', $productId);
     }
 }
