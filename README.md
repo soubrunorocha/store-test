@@ -30,7 +30,7 @@ Now all operations will need an user, password
 Trying to use Laravel Sanctum or OAuth  
   
 
-### Step 4 - Report sales
+### Step 4 - Report sales ✅
 
 Add options to return customer and product details into sales GET endpoint using Laravel Resource Collection
 
