@@ -4,14 +4,13 @@ namespace App\Models;
 
 use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class SaleProduct extends Model
 {
-    use HasApiTokens, HasFactory, UuidTrait, SoftDeletes, Notifiable;
+    use HasFactory, UuidTrait, SoftDeletes;
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -21,14 +20,15 @@ class User extends Authenticatable
     public $incrementing = false;
 
     /**
-     * The attributes that are mass assignable.
+     * The model's attributes.
      *
-     * @var string
+     * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'sale_id',
+        'product_id',
+        'quantity',
+        'value',
     ];
 
     /**
@@ -37,7 +37,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
         'deleted_at',
     ];
 
@@ -48,9 +47,21 @@ class User extends Authenticatable
      */
     protected $casts = [
         'id' => 'string',
-        'name' => 'string',
-        'email' => 'string',
+        'sale_id' => 'string',
+        'product_id' => 'string',
+        'quantity' => 'integer',
+        'value' => 'float',
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
+
+    /**
+     * Get the product associated with the SaleProduct
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function product(): HasOne
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
 }

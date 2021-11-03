@@ -1,0 +1,1259 @@
+{
+	"info": {
+		"_postman_id": "d9a7b24a-407d-4afa-8fc1-6cf8d46a8e66",
+		"name": "Huia Store Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Login User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\" : \"admin@admin.com\",\n    \"password\" : \"masterpassword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/login",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/logout",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Auth User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/me",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "customers",
+			"item": [
+				{
+					"name": "List Customers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/customers?page=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Customer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Bruno de Souza Rocha\",\n    \"tax_number\": \"111.111.111-12\",\n    \"birth_date\": \"1993-06-02\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/customers",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Customer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/customers/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f2d8a99d-4aa1-4336-8892-d7cbfb6aec87"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Bruna de Souza Rocha\",\n    \"tax_number\": \"111.111.111-11\",\n    \"birth_date\": \"1993-06-02\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/customers/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f2d8a99d-4aa1-4336-8892-d7cbfb6aec87"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/customers/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"customers",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f2d8a99d-4aa1-4336-8892-d7cbfb6aec87"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "batches",
+					"item": [
+						{
+							"name": "List Product Batches",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/products/:product_id/batches",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products",
+										":product_id",
+										"batches"
+									],
+									"variable": [
+										{
+											"key": "product_id",
+											"value": "d6a55dae-b90b-4e44-b1e9-a3045f4afc22"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show Product Batch",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/products/:product_id/batches/:id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products",
+										":product_id",
+										"batches",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "product_id",
+											"value": "f73e01c4-1b07-44f5-a656-67c37979ebaf"
+										},
+										{
+											"key": "id",
+											"value": "4b55ff9f-4c53-4b38-9fbb-46571c858c5d"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Product Batch",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"custom_id\": \"123124123\",\n    \"manufactured_at\": \"2021-01-01 01:01:01\",\n    \"batch_quantity\": 500\n}"
+								},
+								"url": {
+									"raw": "{{host}}/products/:product_id/batches",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products",
+										":product_id",
+										"batches"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "product_id",
+											"value": "d6a55dae-b90b-4e44-b1e9-a3045f4afc22"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Product Batch",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"custom_id\": \"58455214541\",\n    \"manufactured_at\": \"2016-12-14 06:44:05\",\n    \"batch_quantity\": 202546    \n}"
+								},
+								"url": {
+									"raw": "{{host}}/products/:product_id/batches/:id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products",
+										":product_id",
+										"batches",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "product_id",
+											"value": "f73e01c4-1b07-44f5-a656-67c37979ebaf"
+										},
+										{
+											"key": "id",
+											"value": "4b55ff9f-4c53-4b38-9fbb-46571c858c5d"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Product Batch",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/products/:product_id/batches/:id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products",
+										":product_id",
+										"batches",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "product_id",
+											"value": "f73e01c4-1b07-44f5-a656-67c37979ebaf",
+											"type": "text",
+											"enabled": true
+										},
+										{
+											"key": "id",
+											"value": "4b55ff9f-4c53-4b38-9fbb-46571c858c5d",
+											"type": "text",
+											"enabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "List Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/products",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/products/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "002c4f11-02a1-4a30-85eb-de4578870923"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Cool Shoe\",\n    \"custom_id\": \"58455214541\",\n    \"batch_number\": 202546,\n    \"color\": \"Yellow\",\n    \"description\": \"A cool yellow shoe\",\n    \"value\": 8001.00\n}"
+						},
+						"url": {
+							"raw": "{{host}}/products",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Cool Shoe\",\n    \"custom_id\": \"58455214541\",\n    \"batch_number\": 202546,\n    \"color\": \"Yellow\",\n    \"description\": \"A cool yellow shoe\",\n    \"value\": 8002.00\n}"
+						},
+						"url": {
+							"raw": "{{host}}/products/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "246578e4-b8c5-4a59-a702-74f080770fa8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/products/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "246578e4-b8c5-4a59-a702-74f080770fa8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "List Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/users/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "d7d27738-fbe4-42d9-894d-682c3898d0c8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Joe Doe\",\n    \"email\": \"joe.doe@huia-test.com\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/users",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Joe Doe\",\n    \"email\": \"joe.doe1@huia-test.com\",\n    \"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/users/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "d7d27738-fbe4-42d9-894d-682c3898d0c8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/users/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "0c62aa28-721f-48c9-9877-1a104e0ddb62"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sales",
+			"item": [
+				{
+					"name": "products",
+					"item": [
+						{
+							"name": "List Sale Products",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/sales/:sale_id/products",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"sales",
+										":sale_id",
+										"products"
+									],
+									"variable": [
+										{
+											"key": "sale_id",
+											"value": "eae7cc7f-4332-4b6c-97fa-c1907e4df3e7"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show Sale Product",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/sales/:sale_id/products/:id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"sales",
+										":sale_id",
+										"products",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "sale_id",
+											"value": "eae7cc7f-4332-4b6c-97fa-c1907e4df3e7"
+										},
+										{
+											"key": "id",
+											"value": "f59cdd22-d4ef-4408-81c9-eb1e01abe229"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Sale Product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"product_id\" : \"f59cdd22-d4ef-4408-81c9-eb1e01abe229\",\n    \"quantity\" : 500\n}"
+								},
+								"url": {
+									"raw": "{{host}}/sales/:sale_id/products",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"sales",
+										":sale_id",
+										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "sale_id",
+											"value": "eae7cc7f-4332-4b6c-97fa-c1907e4df3e7"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Sale  Product",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"quantity\" : 502\n}"
+								},
+								"url": {
+									"raw": "{{host}}/sales/:sale_id/products/:id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"sales",
+										":sale_id",
+										"products",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "sale_id",
+											"value": "eae7cc7f-4332-4b6c-97fa-c1907e4df3e7"
+										},
+										{
+											"key": "id",
+											"value": "26752e4d-d457-4c85-98b2-4ce20ccace2b"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Sale Product",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/products/:product_id/batches/:id",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"products",
+										":product_id",
+										"batches",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "product_id",
+											"value": "f73e01c4-1b07-44f5-a656-67c37979ebaf",
+											"type": "text",
+											"enabled": true
+										},
+										{
+											"key": "id",
+											"value": "4b55ff9f-4c53-4b38-9fbb-46571c858c5d",
+											"type": "text",
+											"enabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "List Sale",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/sales?page=1&report=true&sort=value&direction=desc",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sales"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "report",
+									"value": "true"
+								},
+								{
+									"key": "sort",
+									"value": "value"
+								},
+								{
+									"key": "direction",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Sale",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/sales/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sales",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "79e45a35-6889-4eb6-a903-261ad62cf747"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Sale",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_id\": \"00df0b41-435e-4677-b896-c0234f9311a6\",\n    \"seller_id\": \"31b84cfe-4c67-484e-86d8-1c6065528942\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/sales",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sales"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Sale",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"customer_id\": \"00df0b41-435e-4677-b896-c0234f9311a6\",\n    \"seller_id\": \"31b84cfe-4c67-484e-86d8-1c6065528942\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/sales/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sales",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "ea93508a-6cac-4f47-8e2f-553744e3fd18"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Sale",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/sales/:id",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sales",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "ea93508a-6cac-4f47-8e2f-553744e3fd18"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "2|ETu5BZhL6eRrvhUXvh2A7yXmZXTiBE5SDOnamnqy",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": ""
+		}
+	]
+}
