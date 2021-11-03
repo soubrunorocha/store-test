@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SaleRequest;
+use App\Http\Resources\SaleCollection;
 use App\Models\Sale;
+use Illuminate\Support\Facades\DB;
 
 class SaleController extends Controller
 {
@@ -14,8 +16,15 @@ class SaleController extends Controller
      */
     public function index(SaleRequest $request)
     {
-        return Sale::orderBy('created_at')
-            ->paginate(10);
+        return new SaleCollection(
+            Sale::orderBy(
+                $request->sort ?? "created_at",
+                $request->direction ?? "desc"
+            )->paginate(
+                10,
+                Sale::handleGet($request->report ?? false)
+            )
+        );
     }
 
     /**

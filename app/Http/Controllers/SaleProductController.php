@@ -18,7 +18,7 @@ class SaleProductController extends Controller
      */
     public function index(SaleProductRequest $request, Sale $sale)
     {
-        return $sale->products()
+        return $sale->sale_products()
             ->paginate(10);
     }
 
@@ -32,7 +32,7 @@ class SaleProductController extends Controller
      */
     public function store(SaleProductRequest $request, Sale $sale)
     {
-        return $sale->products()
+        return $sale->sale_products()
             ->create($request->all());
     }
 

@@ -5,8 +5,10 @@ namespace App\Models;
 use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Sale extends Model
 {
@@ -57,8 +59,55 @@ class Sale extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function products(): HasMany
+    public function sale_products(): HasMany
     {
         return $this->hasMany(SaleProduct::class);
+    }
+
+    /**
+     * Get the seller associated with the Sale
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function seller(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'seller_id', 'id');
+    }
+
+    /**
+     * Get the customer associated with the Sale
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+    /**
+     * Format Get for report mode
+     *
+     * @param bool $reportMode
+     *
+     * @return array
+     */
+    public static function handleGet(bool $reportMode) : array
+    {
+        $totalValueField = '*';
+        if ($reportMode) {
+            $totalValueField = DB::raw('(
+                    SELECT
+                        SUM(quantity*value)
+                    FROM sale_products
+                    WHERE sale_products.sale_id = sales.id
+                    AND sale_products.deleted_at IS NULL
+                ) as value
+            ');
+        }
+
+        return [
+            '*',
+            $totalValueField,
+        ];
     }
 }
