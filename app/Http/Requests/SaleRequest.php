@@ -26,4 +26,17 @@ class SaleRequest extends BaseFormRequest
     {
         return $this->store();
     }
+
+    /**
+     * Get the validation rules that apply to the get request.
+     *
+     * @return array
+     */
+    public function view()
+    {
+        return [
+            'sort' => 'in:created_at,value',
+            'direction' => 'in:asc,desc'
+        ];
+    }
 }
