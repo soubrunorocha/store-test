@@ -5,8 +5,8 @@ namespace App\Models;
 use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
 
@@ -62,6 +62,26 @@ class Sale extends Model
     public function sale_products(): HasMany
     {
         return $this->hasMany(SaleProduct::class);
+    }
+
+    /**
+     * Get the seller associated with the Sale
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function seller(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'seller_id', 'id');
+    }
+
+    /**
+     * Get the customer associated with the Sale
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function customer(): BelongsTo
+    {
+        return $this->belongsTo(Customer::class);
     }
 
     /**

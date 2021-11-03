@@ -19,6 +19,8 @@ class SaleResource extends JsonResource
             $this->when(
                 $request->report == true,
                 [
+                        'customer' => $this->customer,
+                        'seller' => $this->seller,
                         'products' => SaleProductResource::collection($this->sale_products),
                     ],
                 []

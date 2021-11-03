@@ -36,7 +36,7 @@ class SaleRequest extends BaseFormRequest
     {
         return [
             'sort' => 'in:created_at,value',
-            'direction' => 'in:asc,desc'
+            'direction' => 'in:asc,desc',
         ];
     }
 }
