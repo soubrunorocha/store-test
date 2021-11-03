@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SaleProduct extends Model
@@ -53,4 +54,14 @@ class SaleProduct extends Model
         'created_at' => 'datetime:Y-m-d H:i:s',
         'updated_at' => 'datetime:Y-m-d H:i:s',
     ];
+
+    /**
+     * Get the product associated with the SaleProduct
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function product(): HasOne
+    {
+        return $this->hasOne(Product::class, 'id', 'product_id');
+    }
 }
