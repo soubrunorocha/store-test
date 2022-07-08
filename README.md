@@ -1,5 +1,5 @@
-# Huia Store Test
-A tech challenge for Huia, based on a Store API with Users, Consumers, Products and Sales, developed in PHP 8 + Laravel 8 with Sqlite.
+# Store Test
+A tech challenge, based on a Store API with Users, Consumers, Products and Sales, developed in PHP 8 + Laravel 8 with Sqlite.
 
 ## Installation
 This test was developed in Laradock project, but can be used in any other development or production environment prepared for Laravel 8. For more instructions to use Laradock, please access [Laradock] website.
